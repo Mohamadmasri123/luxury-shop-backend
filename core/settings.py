@@ -21,7 +21,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'your-super-secret-key-for-testing'
 DEBUG = True
-ALLOWED_HOSTS = ['luxury-shop-backend-yfgt.onrender.com', '.onrender.com', '127.0.0.1', 'localhost', '*']# Build paths inside the project like this: BASE_DIR / 'subdir'.
+ALLOWED_HOSTS = ['*']
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
