@@ -48,9 +48,30 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'parler',
     'store',
     'accounts',
 ]
+
+
+
+LANGUAGE_CODE = 'en' # اللغة الافتراضية للباك إند هي الإنجليزية
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('ar', 'Arabic'),
+)
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'}, # اللغة الأساسية (Default)
+        {'code': 'ar'}, # الترجمة المضافة
+    ),
+    'default': {
+        'fallbacks': ['en'], # إذا لم تتوفر الترجمة العربية يُرجع الإنجليزية
+        'hide_untranslated': False,
+    }
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
