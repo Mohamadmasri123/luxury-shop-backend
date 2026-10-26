@@ -14,6 +14,7 @@ class CategorySerializer(TranslatableModelSerializer):
 class ProductSerializer(TranslatableModelSerializer):
     translations = TranslatedFieldsField(shared_model=Product)
     category_name = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -21,3 +22,12 @@ class ProductSerializer(TranslatableModelSerializer):
 
     def get_category_name(self, obj):
         return obj.category.safe_translation_getter('name', any_language=True)
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            image_url = obj.image.url
+            if request:
+                return request.build_absolute_uri(image_url)
+            return f"http://127.0.0.1:8000{image_url}"
+        return None

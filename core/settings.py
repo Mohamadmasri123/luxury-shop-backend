@@ -177,3 +177,8 @@ MAILERS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # Vite React default
 ]
+
+import os
+
+# قراءة الـ Client ID الحقيقي من ملف البيئة
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '660023648678-h2ivlgmqu3763esi388lgn8t27jqu2vn.apps.googleusercontent.com')
